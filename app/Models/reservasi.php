@@ -13,13 +13,15 @@ class reservasi extends Model
      *
      * @var array
      */
+
+     protected $table = 'reservasi';
     protected $fillable = [
-        'id_reservasi',
-        'id_akun',
+        'no_kamar',
+        'nama',
+        'email',
+        'no_telp',
+        'nik',
         'tanggal_masuk',
         'tanggal_keluar',
-        'tanggal_checkin',
-        'tanggal_checkout',
-        'no_kamar'
     ]; 
 }

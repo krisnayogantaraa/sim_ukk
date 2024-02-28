@@ -6,7 +6,7 @@
 <form action="{{ route('jenis.update', $jenis_ruangan->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-
+    <input type="hidden" name="ketersediaan" value="{{$jenis_ruangan->ketersediaan}}">
     <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
             <label for="Nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Kamar</label>
@@ -31,32 +31,6 @@
                 <option value="Basic">Basic</option>
                 <option value="Deluxe">Deluxe</option>
                 <option selected value="Executive">Executive</option>
-                @endif
-            </select>
-        </div>
-        <div>
-            <label for="Jenis_kasur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Jenis Kasur</label>
-            <select id="Jenis_kasur" name="Jenis_kasur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                @if($jenis_ruangan->jenis_kasur == "Single")
-                <option selected value="Single">Single</option>
-                <option value="Twin">Twin</option>
-                <option value="Queen">Queen</option>
-                <option value="King">King</option>
-                @elseif($jenis_ruangan->jenis_kasur == "Twin")
-                <option value="Single">Single</option>
-                <option selected value="Twin">Twin</option>
-                <option value="Queen">Queen</option>
-                <option value="King">King</option>
-                @elseif($jenis_ruangan->jenis_kasur == "Queen")
-                <option value="Single">Single</option>
-                <option value="Twin">Twin</option>
-                <option selected value="Queen">Queen</option>
-                <option value="King">King</option>
-                @elseif($jenis_ruangan->jenis_kasur == "King")
-                <option value="Single">Single</option>
-                <option value="Twin">Twin</option>
-                <option value="Queen">Queen</option>
-                <option selected value="King">King</option>
                 @endif
             </select>
         </div>

@@ -26,15 +26,11 @@ class UserAccess
             // Pengguna mencoba mengakses rute yang tidak sesuai, arahkan ke rute sesuai perannya
             switch (auth()->user()->type) {
                 case 'admin':
-                    return redirect()->route('posts.index');
-                case 'operator':
-                    return redirect()->route('posts2.index');
-                case 'gudang':
-                    return redirect()->route('warehouse2.index');
-                case 'ekspedisi':
-                    return redirect()->route('ekspedisi2.index');
+                    return redirect()->route('jenis.index');
+                case 'resepsionis':
+                    return redirect()->route('.index');
                 default:
-                    return redirect()->route('posts.index');
+                    return redirect()->route('jenis.index');
             }
         }
     

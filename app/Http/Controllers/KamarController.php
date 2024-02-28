@@ -9,7 +9,8 @@ use App\Models\jenis_ruangan;
 use App\Models\Fasilitas;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class KamarController extends Controller
 {
@@ -20,18 +21,39 @@ class KamarController extends Controller
      */
     public function index(Request $request): View
     {
+        $Hasilbasic = DB::table('jenis_ruangan')
+            ->where('jenis_suite', 'basic')
+            ->first();
 
-        if ($request->has('search')) {
-            $jenis_ruangan = jenis_ruangan::where('id', 'LIKE', "%$request->search%")
-                ->orWhere('nama', 'LIKE', "%$request->search%")
-                ->paginate(10);
-        } else {
-            $jenis_ruangan = jenis_ruangan::latest()->paginate(10);
-        }
+        $Hasildeluxe = DB::table('jenis_ruangan')
+            ->where('jenis_suite', 'deluxe')
+            ->first();
 
+        $Hasilexecutive = DB::table('jenis_ruangan')
+            ->where('jenis_suite', 'executive')
+            ->first();
+
+        $harga_basic = $Hasilbasic ? $Hasilbasic->harga : 0;
+        $harga_deluxe = $Hasildeluxe ?  $Hasildeluxe->harga : 0;
+        $harga_executive = $Hasilexecutive ? $Hasilexecutive->harga : 0;
+
+        $basicCount = DB::table('jenis_ruangan')
+            ->where('jenis_suite', 'Basic')
+            ->where('ketersediaan', 'ya')
+            ->count();
+
+        $deluxeCount = DB::table('jenis_ruangan')
+            ->where('jenis_suite', 'Deluxe')
+            ->where('ketersediaan', 'ya')
+            ->count();
+
+        $executiveCount = DB::table('jenis_ruangan')
+            ->where('jenis_suite', 'Executive')
+            ->where('ketersediaan', 'ya')
+            ->count();
 
         //render view with warehouse
-        return view('jenis.index', compact('jenis_ruangan'));
+        return view('kamar.index', compact('harga_basic', 'harga_deluxe', 'harga_executive', 'basicCount', 'deluxeCount', 'executiveCount'));
     }
     /**
      * create

@@ -6,10 +6,14 @@ use App\Models\add_fasilitas_ruangan;
 use App\Models\Hotel;
 use App\Models\jenis_ruangan;
 use App\Models\Fasilitas;
+use App\Models\reservasi;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage; 
+use Carbon\Carbon;
+
 
 class ReservasiController extends Controller
 {
@@ -73,10 +77,13 @@ class ReservasiController extends Controller
      * @param  mixed $id
      * @return View
      */
-    public function edit(string $id): View
+    public function edit(string $jenis_suite): View
     {
-        //get Fasilitas by ID
-        $jenis_ruangan = jenis_ruangan::findOrFail($id);
+        //get  by jenis_suite
+        $jenis_ruangan = DB::table('jenis_ruangan')
+            ->where('jenis_suite', $jenis_suite)
+            ->where('ketersediaan', 'ya')
+            ->first();
 
         //render view with jenis_ruangan
         return view('reservasi.create', compact('jenis_ruangan'));
@@ -95,25 +102,32 @@ class ReservasiController extends Controller
         $this->validate($request, [
             'no_kamar' => 'required',
             'nama' => 'required|min:5',
-            'Jenis_suite' => 'required',
-            'Jenis_kasur' => 'required',
-            'kapasitas' => 'required',
-            'harga' => 'required',
+            'email' => 'required',
+            'no_telp' => 'required',
+            'nik' => 'required',
+            'tanggal_masuk' => 'required',
+            'tanggal_keluar' => 'required',
         ]);
 
-        //get post by ID
         $post = jenis_ruangan::findOrFail($id);
 
-        //update post with new image
-        $post->update([
+        $tanggal_masuk = Carbon::createFromFormat('m/d/Y', $request->input('tanggal_masuk'))->format('Y-m-d');
+        $tanggal_keluar = Carbon::createFromFormat('m/d/Y', $request->input('tanggal_keluar'))->format('Y-m-d');
+
+        reservasi::create([
             'no_kamar' => $request->no_kamar,
             'nama' => $request->nama,
-            'jenis_suite' => $request->Jenis_suite,
-            'jenis_kasur' => $request->Jenis_kasur,
-            'kapasitas' => $request->kapasitas,
-            'harga' => $request->harga,
+            'email' => $request->email,
+            'no_telp' => $request->no_telp,
+            'nik' => $request->nik,
+            'tanggal_masuk' => $tanggal_masuk,
+            'tanggal_keluar' => $tanggal_keluar,
         ]);
 
+        $tidak = "tidak";
+        $post->update([
+            'ketersediaan' => $tidak,
+        ]);
 
         //redirect to index
         return redirect()->route('jenis.index')->with(['success' => 'Data Berhasil Diubah!']);

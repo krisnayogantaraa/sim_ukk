@@ -54,9 +54,8 @@ class Jenis_ruanganController extends Controller
         //validate form
         $this->validate($request, [
             'no_kamar' => 'required',
-            'nama' => 'required|min:5',
+            'nama' => 'required',
             'Jenis_suite' => 'required',
-            'Jenis_kasur' => 'required',
             'kapasitas' => 'required',
             'harga' => 'required',
             'ketersediaan' => 'required',
@@ -67,7 +66,6 @@ class Jenis_ruanganController extends Controller
             'no_kamar' => $request->no_kamar,
             'nama' => $request->nama,
             'jenis_suite' => $request->Jenis_suite,
-            'jenis_kasur' => $request->Jenis_kasur,
             'kapasitas' => $request->kapasitas,
             'harga' => $request->harga,
             'ketersediaan' => $request->ketersediaan,
@@ -103,12 +101,13 @@ class Jenis_ruanganController extends Controller
         //validate form
         $this->validate($request, [
             'no_kamar' => 'required',
-            'nama' => 'required|min:5',
+            'nama' => 'required',
             'Jenis_suite' => 'required',
-            'Jenis_kasur' => 'required',
             'kapasitas' => 'required',
             'harga' => 'required',
+            'ketersediaan' => 'required',
         ]);
+        
 
         //get post by ID
         $post = jenis_ruangan::findOrFail($id);
@@ -118,9 +117,9 @@ class Jenis_ruanganController extends Controller
             'no_kamar' => $request->no_kamar,
             'nama' => $request->nama,
             'jenis_suite' => $request->Jenis_suite,
-            'jenis_kasur' => $request->Jenis_kasur,
             'kapasitas' => $request->kapasitas,
             'harga' => $request->harga,
+            'ketersediaan' => $request->ketersediaan,
         ]);
 
 

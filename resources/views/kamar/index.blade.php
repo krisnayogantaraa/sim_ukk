@@ -1,85 +1,171 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content')
-<p class="text-5xl mb-3 dark:text-white">Daftar Jenis Kamar</p>
-<div class="flex mt-10">
-    <div class="mr-auto">
-        <a href="{{ route('jenis.create') }}">
-            <button type="button" class="focus:outline-none text-white font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 bg-green-600 hover:bg-green-700 focus:ring-green-800 w-40">Input
-                Kamar Baru</button>
-        </a>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Welcome</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <!-- Scripts -->
+    <link rel="stylesheet" href="../css/styles.css">
+    @vite(['resources/css/app.css','resources/js/app.js'])
+
+</head>
+
+<body class="bg-gray-50">
+    <div class=" flex p-2 w-10/12 mx-auto mt-20">
+        <div>
+            <p class="text-5xl mb-3 dark:text-white">HOTEL HEBAT</p>
+        </div>
+        <div class="ml-auto my-auto flex gap-3">
+            <a href="{{ route('welcome') }}" class="text-xl mb-3 dark:text-white">HOME</a>
+            <p class="text-xl mb-3 dark:text-white">|</p>
+            <a href="{{ route('kamar.index') }}" class="text-xl mb-3 dark:text-white">KAMAR</a>
+            <p class="text-xl mb-3 dark:text-white">|</p>
+            <p class="text-xl mb-3 dark:text-white">FASILITAS</p>
+            <p class="text-xl mb-3 dark:text-white">|</p>
+            @if (Route::has('login'))
+            @auth
+            <a href="{{ route('fasilitas.index') }}" class="text-xl mb-3 dark:text-white">DASHBOARD</a>
+            @else
+            <a href="{{ route('login') }}" class="text-xl mb-3 dark:text-white">LOG IN</a>
+            @endauth
+            @endif
+        </div>
     </div>
-    <div>
-        <form class="w-48 mb-3 float-right" action="/jenis" method="get">
+
+    <div class="gambar-container mx-auto w-9/12 h-82 p-3 shadow-md">
+        <div>
+            <p class=" text-xl font-semibold mb-3 dark:text-white">Basic</p>
+        </div>
+        <div>
             <div class="flex">
-                <div class="relative w-full">
-                    <input type="search" id="search-dropdown" name="search" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search">
-                    <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                        <span class="sr-only">Search</span>
-                    </button>
+                <img src="{{ asset('storage/gambar_hotel/kamar_basic.webp') }}" class=" w-72" alt="Foto Hotel">
+                <div class="p-3 w-full">
+                    <p class=" ml-5 mb-3 dark:text-white text-xl font-semibold">Kamar Basic</p>
+                    <div class="flex">
+                        <div class="flex">
+                            <div class="flex gap-0">
+                                <svg class="mt-1 ml-5" xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M32 32c17.7 0 32 14.3 32 32V320H288V160c0-17.7 14.3-32 32-32H544c53 0 96 43 96 96V448c0 17.7-14.3 32-32 32s-32-14.3-32-32V416H352 320 64v32c0 17.7-14.3 32-32 32s-32-14.3-32-32V64C0 46.3 14.3 32 32 32zm144 96a80 80 0 1 1 0 160 80 80 0 1 1 0-160z" />
+                                </svg>
+                                <p class=" ml-1 mb-3 dark:text-white text-xl">1 Double bed</p>
+                            </div>
+                            <div class="flex">
+                                <svg class="mt-1 ml-5" xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M72 88a56 56 0 1 1 112 0A56 56 0 1 1 72 88zM64 245.7C54 256.9 48 271.8 48 288s6 31.1 16 42.3V245.7zm144.4-49.3C178.7 222.7 160 261.2 160 304c0 34.3 12 65.8 32 90.5V416c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V389.2C26.2 371.2 0 332.7 0 288c0-61.9 50.1-112 112-112h32c24 0 46.2 7.5 64.4 20.3zM448 416V394.5c20-24.7 32-56.2 32-90.5c0-42.8-18.7-81.3-48.4-107.7C449.8 183.5 472 176 496 176h32c61.9 0 112 50.1 112 112c0 44.7-26.2 83.2-64 101.2V416c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32zm8-328a56 56 0 1 1 112 0A56 56 0 1 1 456 88zM576 245.7v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM320 32a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM240 304c0 16.2 6 31 16 42.3V261.7c-10 11.3-16 26.1-16 42.3zm144-42.3v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM448 304c0 44.7-26.2 83.2-64 101.2V448c0 17.7-14.3 32-32 32H288c-17.7 0-32-14.3-32-32V405.2c-37.8-18-64-56.5-64-101.2c0-61.9 50.1-112 112-112h32c61.9 0 112 50.1 112 112z" />
+                                </svg>
+                                <p class=" ml-1 mb-3 dark:text-white text-xl">2 Tamu</p>
+                            </div>
+                        </div>
+                        <div class=" ml-auto">
+                            <p class=" ml-5 mb-3 text-xl font-semibold text-red-600">Sisa {{$basicCount}} Kamar</p>
+                        </div>
+                    </div>
+                    <?php
+                    $basic = "basic";
+                    ?>
+                    <div class="flex mt-10">
+                        <p class=" ml-5 mb-3 text-orange-500 text-3xl font-semibold">Rp. {{$harga_basic}}</p>
+                        <a href="{{ route('reservasi.edit', $basic) }}" style="margin-left: auto;">
+                            <button type="button" class="focus:outline-none text-white font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 bg-green-600 hover:bg-green-700 focus:ring-green-800 w-40">Pesan Sekarang</button>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
 
-
-<div>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700  uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="px-6 py-3">
-                        No ID
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Jenis Ruangan
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Jenis kasur
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Kapasitas
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Harga
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($jenis_ruangan as $jenis)
-                <tr class=" odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{
-                        $jenis->id }}</td>
-                    <td class="px-6 py-4">{{ $jenis->jenis_suite }}</td>
-                    <td class="px-6 py-4">{{ $jenis->jenis_kasur }}</td>
-                    <td class="px-6 py-4">{{ $jenis->kapasitas }}</td>
-                    <td class="px-6 py-4">{{ $jenis->harga }}</td>
-                    <td class="px-6 py-4">
-                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('jenis.destroy', $jenis->id) }}" method="POST">
-                            <a href="{{ route('jenis.edit', $jenis->id) }}">
-                                <button type="button" class="text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800 w-44">Edit</button>
-                            </a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-red-600 hover:bg-red-700 focus:ring-red-900 w-44">HAPUS</button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <div class="alert alert-danger">
-                    Data Jenis Kamar belum Tersedia.
+    <div class="gambar-container mx-auto w-9/12 h-82 p-3 shadow-md">
+        <div>
+            <p class=" text-xl font-semibold mb-3 dark:text-white">Deluxe</p>
+        </div>
+        <div>
+            <div class="flex">
+                <img src="{{ asset('storage/gambar_hotel/kamar_deluxe.webp') }}" class=" w-72" alt="Foto Hotel">
+                <div class="p-3 w-full">
+                    <p class=" ml-5 mb-3 dark:text-white text-xl font-semibold">Kamar Deluxe</p>
+                    <div class="flex">
+                        <div class="flex">
+                            <div class="flex gap-0">
+                                <svg class="mt-1 ml-5" xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M32 32c17.7 0 32 14.3 32 32V320H288V160c0-17.7 14.3-32 32-32H544c53 0 96 43 96 96V448c0 17.7-14.3 32-32 32s-32-14.3-32-32V416H352 320 64v32c0 17.7-14.3 32-32 32s-32-14.3-32-32V64C0 46.3 14.3 32 32 32zm144 96a80 80 0 1 1 0 160 80 80 0 1 1 0-160z" />
+                                </svg>
+                                <p class=" ml-1 mb-3 dark:text-white text-xl">1 Double bed 1 Single Bed</p>
+                            </div>
+                            <div class="flex">
+                                <svg class="mt-1 ml-5" xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M72 88a56 56 0 1 1 112 0A56 56 0 1 1 72 88zM64 245.7C54 256.9 48 271.8 48 288s6 31.1 16 42.3V245.7zm144.4-49.3C178.7 222.7 160 261.2 160 304c0 34.3 12 65.8 32 90.5V416c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V389.2C26.2 371.2 0 332.7 0 288c0-61.9 50.1-112 112-112h32c24 0 46.2 7.5 64.4 20.3zM448 416V394.5c20-24.7 32-56.2 32-90.5c0-42.8-18.7-81.3-48.4-107.7C449.8 183.5 472 176 496 176h32c61.9 0 112 50.1 112 112c0 44.7-26.2 83.2-64 101.2V416c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32zm8-328a56 56 0 1 1 112 0A56 56 0 1 1 456 88zM576 245.7v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM320 32a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM240 304c0 16.2 6 31 16 42.3V261.7c-10 11.3-16 26.1-16 42.3zm144-42.3v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM448 304c0 44.7-26.2 83.2-64 101.2V448c0 17.7-14.3 32-32 32H288c-17.7 0-32-14.3-32-32V405.2c-37.8-18-64-56.5-64-101.2c0-61.9 50.1-112 112-112h32c61.9 0 112 50.1 112 112z" />
+                                </svg>
+                                <p class=" ml-1 mb-3 dark:text-white text-xl">3 Tamu</p>
+                            </div>
+                        </div>
+                        <div class=" ml-auto">
+                            <p class=" ml-5 mb-3 text-xl font-semibold text-red-600">Sisa {{$deluxeCount}} Kamar</p>
+                        </div>
+                    </div>
+                    <?php
+                    $basic = "basic";
+                    ?>
+                    <div class="flex mt-10">
+                        <p class=" ml-5 mb-3 text-orange-500 text-3xl font-semibold">Rp. {{$harga_deluxe}}</p>
+                        <a href="{{ route('reservasi.edit', $basic) }}" style="margin-left: auto;">
+                            <button type="button" class="focus:outline-none text-white font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 bg-green-600 hover:bg-green-700 focus:ring-green-800 w-40">Pesan Sekarang</button>
+                        </a>
+                    </div>
                 </div>
-                @endforelse
-            </tbody>
-        </table>
-        {{$jenis_ruangan->links()}}
+            </div>
+        </div>
     </div>
-</div>
-@endsection
+
+    <div class="gambar-container mx-auto w-9/12 h-82 p-3 shadow-md">
+        <div>
+            <p class=" text-xl font-semibold mb-3 dark:text-white">Executive</p>
+        </div>
+        <div>
+            <div class="flex">
+                <img src="{{ asset('storage/gambar_hotel/kamar_executive.webp') }}" class=" w-72" alt="Foto Hotel">
+                <div class="p-3 w-full">
+                    <p class=" ml-5 mb-3 dark:text-white text-xl font-semibold">Kamar Executive</p>
+                    <div class="flex">
+                        <div class="flex">
+                            <div class="flex gap-0">
+                                <svg class="mt-1 ml-5" xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M32 32c17.7 0 32 14.3 32 32V320H288V160c0-17.7 14.3-32 32-32H544c53 0 96 43 96 96V448c0 17.7-14.3 32-32 32s-32-14.3-32-32V416H352 320 64v32c0 17.7-14.3 32-32 32s-32-14.3-32-32V64C0 46.3 14.3 32 32 32zm144 96a80 80 0 1 1 0 160 80 80 0 1 1 0-160z" />
+                                </svg>
+                                <p class=" ml-1 mb-3 dark:text-white text-xl">1 Double bed</p>
+                            </div>
+                            <div class="flex">
+                                <svg class="mt-1 ml-5" xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M72 88a56 56 0 1 1 112 0A56 56 0 1 1 72 88zM64 245.7C54 256.9 48 271.8 48 288s6 31.1 16 42.3V245.7zm144.4-49.3C178.7 222.7 160 261.2 160 304c0 34.3 12 65.8 32 90.5V416c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V389.2C26.2 371.2 0 332.7 0 288c0-61.9 50.1-112 112-112h32c24 0 46.2 7.5 64.4 20.3zM448 416V394.5c20-24.7 32-56.2 32-90.5c0-42.8-18.7-81.3-48.4-107.7C449.8 183.5 472 176 496 176h32c61.9 0 112 50.1 112 112c0 44.7-26.2 83.2-64 101.2V416c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32zm8-328a56 56 0 1 1 112 0A56 56 0 1 1 456 88zM576 245.7v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM320 32a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM240 304c0 16.2 6 31 16 42.3V261.7c-10 11.3-16 26.1-16 42.3zm144-42.3v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM448 304c0 44.7-26.2 83.2-64 101.2V448c0 17.7-14.3 32-32 32H288c-17.7 0-32-14.3-32-32V405.2c-37.8-18-64-56.5-64-101.2c0-61.9 50.1-112 112-112h32c61.9 0 112 50.1 112 112z" />
+                                </svg>
+                                <p class=" ml-1 mb-3 dark:text-white text-xl">2 Tamu</p>
+                            </div>
+                        </div>
+                        <div class=" ml-auto">
+                        <p class=" ml-5 mb-3 text-xl font-semibold text-red-600">Sisa  {{$executivewebCount}} Kamar</p>
+                        </div>
+                    </div>
+                    <?php
+                    $basic = "basic";
+                    ?>
+                    <div class="flex mt-10">
+                        <p class=" ml-5 mb-3 text-orange-500 text-3xl font-semibold">Rp. {{$harga_executive}}</p>
+                        <a href="{{ route('reservasi.edit', $basic) }}" style="margin-left: auto;">
+                            <button type="button" class="focus:outline-none text-white font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 bg-green-600 hover:bg-green-700 focus:ring-green-800 w-40">Pesan Sekarang</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

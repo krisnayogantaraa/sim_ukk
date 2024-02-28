@@ -20,8 +20,8 @@ class jenis_ruangan extends Model
         'no_kamar',
         'nama',
         'jenis_suite',
-        'jenis_kasur',
         'kapasitas',
-        'harga'
+        'harga',
+        'ketersediaan'
     ];
 }

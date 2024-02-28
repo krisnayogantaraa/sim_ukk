@@ -42,9 +42,6 @@
                         Jenis Kamar
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Jenis kasur
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                         Kapasitas
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -65,16 +62,11 @@
                         $jenis->no_kamar }}</td>
                     <td class="px-6 py-4">{{ $jenis->nama }}</td>
                     <td class="px-6 py-4">{{ $jenis->jenis_suite }}</td>
-                    <td class="px-6 py-4">{{ $jenis->jenis_kasur }}</td>
                     <td class="px-6 py-4">{{ $jenis->kapasitas }}</td>
                     <td class="px-6 py-4">{{ $jenis->harga }}</td>
                     <td class="px-6 py-4">{{ $jenis->ketersediaan }}</td>
                     <td class="px-6 py-4">
                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('jenis.destroy', $jenis->id) }}" method="POST">
-                            <a href="{{ route('reservasi.edit', $jenis->id) }}">
-                                <button type="button" class="focus:outline-none text-white font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 bg-green-600 hover:bg-green-700 focus:ring-green-800 w-40">Input
-                                    Reservasi Baru</button>
-                            </a>
                             <a href="{{ route('jenis.edit', $jenis->id) }}">
                                 <button type="button" class="text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800 w-44">Edit</button>
                             </a>

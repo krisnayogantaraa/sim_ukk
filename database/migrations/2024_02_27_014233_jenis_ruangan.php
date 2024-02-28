@@ -18,10 +18,9 @@ return new class extends Migration
             $table->integer('no_kamar')->unique();
             $table->string('nama');
             $table->string('jenis_suite');
-            $table->string('jenis_kasur');
             $table->integer('kapasitas');
             $table->integer('harga');
-            $table->string('ketersediaan')->default('ya');
+            $table->string('ketersediaan');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
 <p class="text-5xl mb-3 text-gray-900 dark:text-white">DAFTAR KAMAR BARU</p>
 <form action="{{ route('jenis.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
+    <input type="hidden" name="ketersediaan" value="ya">
     <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
             <label for="Nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Kamar</label>
@@ -22,16 +24,7 @@
                 <option value="Executive">Executive</option>
             </select>
         </div>
-        <div>
-            <label for="Jenis_kasur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Jenis Kasur</label>
-            <select id="Jenis_kasur" name="Jenis_kasur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>pilih jenis Kasur</option>
-                <option value="Single">Single</option>
-                <option value="Twin">Twin</option>
-                <option value="Queen">Queen</option>
-                <option value="King">King</option>
-            </select>
-        </div>
+
         <div>
             <label for="kapasitas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">kapasitas Kamar</label>
             <input type="text" id="kapasitas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contoh : Bathub" required name="kapasitas">
