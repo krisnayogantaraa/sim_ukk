@@ -27,8 +27,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::resource('/reservasi', \App\Http\Controllers\ReservasiController ::class);
-    Route::resource('/kamar', \App\Http\Controllers\KamarController ::class);
+Route::resource('/reservasi', \App\Http\Controllers\ReservasiController::class);
+Route::resource('/resepsionis', \App\Http\Controllers\ResepsionisController ::class);
+Route::resource('/kamar', \App\Http\Controllers\KamarController::class);
 
 Auth::routes();
 
@@ -43,7 +44,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/home', [\App\Http\Controllers\Jenis_ruanganController::class, 'index'])->name('home');
     Route::resource('/fasilitas', \App\Http\Controllers\FasilitasController::class);
     Route::resource('/hotel', \App\Http\Controllers\HotelController::class);
-    Route::resource('/jenis', \App\Http\Controllers\Jenis_ruanganController ::class);
+    Route::resource('/jenis', \App\Http\Controllers\Jenis_ruanganController::class);
     Route::resource('/users', \App\Http\Controllers\DaftarController::class);
 });
 
