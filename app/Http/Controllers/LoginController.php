@@ -20,15 +20,11 @@ class LoginController extends Controller
     {
         switch (auth()->user()->type) {
             case 'admin':
-                return redirect()->route('posts.index');
+                return redirect()->route('jenis.index');
             case 'operator':
-                return redirect()->route('posts2.index');
-            case 'gudang':
-                return redirect()->route('warehouse.index');
-            case 'ekspedisi':
-                return redirect()->route('ekspedisi.index');
+                return redirect()->route('resepsionis.index');
             default:
-                return redirect()->route('posts.index');
+                return redirect()->route('jenis.index');
         }
     }
 

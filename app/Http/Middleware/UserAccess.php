@@ -28,7 +28,7 @@ class UserAccess
                 case 'admin':
                     return redirect()->route('jenis.index');
                 case 'resepsionis':
-                    return redirect()->route('.index');
+                    return redirect()->route('resepsionis.index');
                 default:
                     return redirect()->route('jenis.index');
             }

@@ -27,8 +27,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/sampul_fasilitas', function () {
+    return view('sampul_fasilitas');
+})->name('sampul_fasilitas');
+
 Route::resource('/reservasi', \App\Http\Controllers\ReservasiController::class);
-Route::resource('/resepsionis', \App\Http\Controllers\ResepsionisController ::class);
+Route::resource('/resepsionis', \App\Http\Controllers\ResepsionisController::class);
 Route::resource('/kamar', \App\Http\Controllers\KamarController::class);
 
 Auth::routes();
@@ -48,9 +52,10 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::resource('/users', \App\Http\Controllers\DaftarController::class);
 });
 
-Route::middleware(['auth', 'user-access:ekspedisi'])->group(function () {
-
-    Route::resource('/ekspedisi2', \App\Http\Controllers\EkspedisiController::class);
+Route::middleware(['auth', 'user-access:resepsionis'])->group(function () {
+    Route::resource('/resepsionis', \App\Http\Controllers\ResepsionisController::class);
+    Route::get('/reservasi/checkin/{id}', [\App\Http\Controllers\ReservasiController::class, 'checkin'])->name('reservasi.checkin');
+    Route::get('/reservasi/checkout/{id}', [\App\Http\Controllers\ReservasiController::class, 'checkout'])->name('reservasi.checkout');
 });
 
 

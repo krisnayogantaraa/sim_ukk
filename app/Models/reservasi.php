@@ -23,5 +23,7 @@ class reservasi extends Model
         'nik',
         'tanggal_masuk',
         'tanggal_keluar',
+        'tanggal_checkin',
+        'tanggal_checkout',
     ]; 
 }

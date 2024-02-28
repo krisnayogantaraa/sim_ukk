@@ -44,10 +44,18 @@
     </div>
 
     <div class="mt-10 mx-auto w-3/12">
-        <p class="text-4xl mb-3 dark:text-white text-center">TENTANG KAMI</p>
+        <p class="text-4xl mb-3 dark:text-white text-center">Fasilitas</p>
     </div>
-    <div class="mt-10 mx-auto w-8/12 text-center">
-        <p class="text-lg mb-3 dark:text-white">Selamat datang di hotel kami, sebuah tempat di mana kenyamanan bertemu dengan keanggunan, menciptakan pengalaman tak terlupakan bagi setiap tamu kami. Di sini, kami tidak hanya menyediakan tempat bermalam yang mewah, tetapi juga merangkul Anda dengan keramahan dan pelayanan terbaik. Dengan desain interior yang elegan dan fasilitas modern yang disesuaikan untuk kebutuhan Anda, kami berkomitmen untuk menjadikan setiap kunjungan Anda sebagai momen istimewa. Dari hidangan lezat di restoran kami hingga suasana santai di lobi, setiap detail telah dirancang untuk menciptakan suasana yang menenangkan dan memanjakan. Bersama kami, Anda tidak hanya menginap di sebuah hotel, tetapi Anda memasuki dunia kami yang penuh perhatian terhadap detail dan kepuasan Anda. Selamat menikmati pengalaman tak terlupakan di hotel kami, di mana setiap kunjungan adalah kisah yang kami banggakan.</p>
+    <div class="mt-10 mb-10 mx-auto w-10/12 flex gap-2">
+        <div class="w-1/3">
+            <img src="{{ asset('storage/fasilitas/lobi.webp') }}" alt="Foto Hotel">
+        </div>
+        <div class="w-1/3">
+            <img src="{{ asset('storage/fasilitas/kolam.webp') }}" alt="Foto Hotel">
+        </div>
+        <div class="w-1/3">
+            <img src="{{ asset('storage/fasilitas/restoran.webp') }}" alt="Foto Hotel">
+        </div>
     </div>
 
 </body>

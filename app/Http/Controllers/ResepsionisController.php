@@ -28,6 +28,7 @@ class ResepsionisController extends Controller
             $reservasi = reservasi::where('id', 'LIKE', "%$request->search%")
                 ->orWhere('nama', 'LIKE', "%$request->search%")
                 ->orWhere('nik', 'LIKE', "%$request->search%")
+                ->orWhere('no_kamar', 'LIKE', "%$request->search%")
                 ->paginate(10);
         } else {
             $reservasis = reservasi::latest()->paginate(10);

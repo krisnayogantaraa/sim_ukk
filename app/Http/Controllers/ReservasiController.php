@@ -11,7 +11,7 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 
@@ -46,7 +46,7 @@ class ReservasiController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        
+
 
         //validate form
         $this->validate($request, [
@@ -131,6 +131,42 @@ class ReservasiController extends Controller
 
         //redirect to index
         return redirect()->route('jenis.index')->with(['success' => 'Data Berhasil Diubah!']);
+    }
+    /**
+     * checkin
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return RedirectResponse
+     */
+    public function checkin($id): RedirectResponse
+    {
+        $reservasi = reservasi::find($id);
+
+        $reservasi->update([
+            'tanggal_checkin' => Carbon::now(),
+        ]);
+
+        //redirect to index
+        return redirect()->route('resepsionis.index')->with(['success' => 'Data Berhasil Diubah!']);
+    }
+    /**
+     * checkout
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return RedirectResponse
+     */
+    public function checkout($id): RedirectResponse
+    {
+        $reservasi = reservasi::find($id);
+
+        $reservasi->update([
+            'tanggal_checkout' => Carbon::now(),
+        ]);
+
+        //redirect to index
+        return redirect()->route('resepsionis.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
     /**
      * destroy

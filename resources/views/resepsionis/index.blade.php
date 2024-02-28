@@ -45,10 +45,13 @@
                         No telp
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Harga
+                        Email
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Ketersediaan
+                        Check In
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Check Out
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Action
@@ -63,17 +66,25 @@
                     <td class="px-6 py-4">{{ $reservasi->nama }}</td>
                     <td class="px-6 py-4">{{ $reservasi->nik }}</td>
                     <td class="px-6 py-4">{{ $reservasi->no_telp }}</td>
-                    <td class="px-6 py-4">{{ $reservasi->harga }}</td>
-                    <td class="px-6 py-4">{{ $reservasi->ketersediaan }}</td>
+                    <td class="px-6 py-4">{{ $reservasi->email }}</td>
+                    <td class="px-6 py-4">{{ $reservasi->tanggal_checkin }}</td>
+                    <td class="px-6 py-4">{{ $reservasi->tanggal_checkout }}</td>
                     <td class="px-6 py-4">
-                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('reservasi.destroy', $reservasi->id) }}" method="POST">
-                            <a href="{{ route('reservasi.edit', $reservasi->id) }}">
-                                <button type="button" class="text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800 w-44">Edit</button>
-                            </a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-red-600 hover:bg-red-700 focus:ring-red-900 w-44">HAPUS</button>
-                        </form>
+                        @if($reservasi->tanggal_checkout)
+                        <a href="{{ route('reservasi.checkin', $reservasi->id) }}">
+                            <button type="button" disabled ="text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800 w-44">Selesai</button>
+                        </a>
+                        @else
+                        @if($reservasi->tanggal_checkin)
+                        <a href="{{ route('reservasi.checkout', $reservasi->id) }}">
+                            <button type="button" class="text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-red-800 w-44">Check out</button>
+                        </a>
+                        @else
+                        <a href="{{ route('reservasi.checkin', $reservasi->id) }}">
+                            <button type="button" class="text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800 w-44">Check in</button>
+                        </a>
+                        @endif
+                        @endif
                     </td>
                 </tr>
                 @empty
