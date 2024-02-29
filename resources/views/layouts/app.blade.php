@@ -58,8 +58,8 @@
     <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 " aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 border border-gray-800">
             <a href="#" class="flex items-center ps-2.5 mb-5">
-                <img src="{{ asset('storage/img/LOGO.png') }}" class="h-20 me-3 sm:h-15" alt="Cikoantar Logo" />
-                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">CIKOANTAR</span>
+                <img src="{{ asset('storage/img/LOGO.png') }}" class="h-20 me-3 sm:h-15" alt="HOTEL Logo" />
+                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">HOTEL</span>
             </a>
             <ul class="space-y-2 font-medium">
                 @if(auth()->user()->type == "admin")
