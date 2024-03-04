@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<p class="text-5xl mb-3 dark:text-white">Daftar Permohonan Baru</p>
+<p class="text-5xl mb-3 dark:text-white">Daftar user </p>
 <a href="{{ route('users.create') }}">
-    <button type="button" class="focus:outline-none text-white font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 bg-green-600 hover:bg-green-700 focus:ring-green-800 w-56">Pengajuan Baru</button>
+    <button type="button" class="focus:outline-none text-white font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 bg-green-600 hover:bg-green-700 focus:ring-green-800 w-56">User Baru</button>
 </a>
 
 <div>
@@ -75,7 +75,7 @@
                 </tr>
                 @empty
                 <div class="alert alert-danger">
-                    Data Pengajuan belum Tersedia.
+                    Data user belum Tersedia.
                 </div>
                 @endforelse
             </tbody>

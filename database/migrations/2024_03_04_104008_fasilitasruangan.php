@@ -8,14 +8,12 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
-        Schema::create('add_fasilitas_ruangan', function (Blueprint $table) {
-            $table->integer('id_ruangan');
-            $table->integer('id_fasilitas');
+        Schema::create('fasilitas_ruangan', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('add_fasilitas_ruangan');
+        Schema::dropIfExists('fasilitas_ruangan');
     }
 };

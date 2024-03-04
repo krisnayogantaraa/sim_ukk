@@ -165,6 +165,12 @@ class ReservasiController extends Controller
             'tanggal_checkout' => Carbon::now(),
         ]);
 
+        DB::table('jenis_ruangan')
+        ->where('no_kamar', $reservasi->no_kamar)
+        ->update([
+            'ketersediaan' => 'ya',
+        ]);
+
         //redirect to index
         return redirect()->route('resepsionis.index')->with(['success' => 'Data Berhasil Diubah!']);
     }

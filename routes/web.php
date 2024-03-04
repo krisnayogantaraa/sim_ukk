@@ -32,8 +32,9 @@ Route::get('/sampul_fasilitas', function () {
 })->name('sampul_fasilitas');
 
 Route::resource('/reservasi', \App\Http\Controllers\ReservasiController::class);
-Route::resource('/resepsionis', \App\Http\Controllers\ResepsionisController::class);
 Route::resource('/kamar', \App\Http\Controllers\KamarController::class);
+Route::resource('/fasilitashotel', \App\Http\Controllers\FasilitasHotelController::class);
+
 
 Auth::routes();
 
